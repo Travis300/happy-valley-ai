@@ -804,6 +804,15 @@
     });
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
+
+  // Prevent Voiceflow iframes from hijacking scroll on init
+  let scrollLocked = true;
+  function preventScroll() { if (scrollLocked) window.scrollTo(0, 0); }
+  window.addEventListener('scroll', preventScroll);
+  setTimeout(() => {
+    scrollLocked = false;
+    window.removeEventListener('scroll', preventScroll);
+  }, 2000);
 </script>
 
 <script type="text/javascript">
