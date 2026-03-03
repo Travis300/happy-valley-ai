@@ -804,20 +804,20 @@
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
-          <input type="text" placeholder="John">
+          <input id="firstName" type="text" placeholder="John">
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input type="text" placeholder="Smith">
+          <input id="lastName" type="text" placeholder="Smith">
         </div>
       </div>
       <div class="form-group">
         <label>Business Email</label>
-        <input type="email" placeholder="john@company.com">
+        <input id="email" type="email" placeholder="john@company.com">
       </div>
       <div class="form-group">
         <label>Business Type</label>
-        <select>
+        <select id="businessType">
           <option value="" disabled selected>Select your industry...</option>
           <option>E-Commerce</option>
           <option>SaaS / Tech</option>
@@ -830,9 +830,9 @@
       </div>
       <div class="form-group">
         <label>What do you need?</label>
-        <textarea placeholder="Tell us what you're looking to automate or improve..."></textarea>
+        <textarea id="message" placeholder="Tell us what you're looking to automate or improve..."></textarea>
       </div>
-      <button class="form-submit">Send Message →</button>
+      <button id="submitBtn" class="form-submit">Send Message →</button>
     </div>
   </div>
 </section>
@@ -855,14 +855,54 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Form submit (placeholder)
-  document.querySelector('.form-submit').addEventListener('click', function() {
-    this.textContent = '✓ Message Sent!';
-    this.style.background = '#00e676';
-    setTimeout(() => {
-      this.textContent = 'Send Message →';
-      this.style.background = '';
-    }, 3000);
+  // Contact form submit
+  document.getElementById('submitBtn').addEventListener('click', async function() {
+    const firstName   = document.getElementById('firstName').value.trim();
+    const lastName    = document.getElementById('lastName').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const businessType = document.getElementById('businessType').value;
+    const message     = document.getElementById('message').value.trim();
+
+    if (!firstName || !lastName || !email || !businessType || !message) {
+      alert('Please fill out all fields before submitting.');
+      return;
+    }
+
+    this.textContent = 'Sending...';
+    this.disabled = true;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, businessType, message })
+      });
+
+      if (res.ok) {
+        this.textContent = '✓ Message Sent!';
+        this.style.background = '#00e676';
+        document.getElementById('firstName').value = '';
+        document.getElementById('lastName').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('businessType').selectedIndex = 0;
+        document.getElementById('message').value = '';
+        setTimeout(() => {
+          this.textContent = 'Send Message →';
+          this.style.background = '';
+          this.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      this.textContent = 'Failed — try again';
+      this.style.background = '#ff5f57';
+      this.disabled = false;
+      setTimeout(() => {
+        this.textContent = 'Send Message →';
+        this.style.background = '';
+      }, 3000);
+    }
   });
 </script>
 </body>
