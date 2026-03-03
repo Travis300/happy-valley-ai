@@ -727,6 +727,18 @@
 
   </div><!-- end .work-grid -->
 
+  <!-- LIVE DEMO -->
+  <div style="margin-top: 5rem;" class="reveal">
+    <div class="section-divider" style="padding: 0; margin-bottom: 2.5rem;">
+      <span class="section-label">// Try It Live</span>
+      <div class="divider-line"></div>
+    </div>
+    <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem;">
+      This is a live demo — talk to one of the bots I've built. See exactly what your customers would experience.
+    </p>
+    <div id="voiceflow-embed" style="width: 100%; max-width: 480px; height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"></div>
+  </div>
+
   <!-- INDUSTRIES -->
   <div style="margin-top: 5rem;" class="reveal">
     <div class="section-divider" style="padding: 0; margin-bottom: 2.5rem;">
@@ -802,8 +814,9 @@
           voice: {
             url: "https://runtime-api.voiceflow.com"
           },
-          assistant: {
-            color: '#00e5ff'
+          render: {
+            mode: 'embedded',
+            target: document.getElementById('voiceflow-embed')
           }
         });
       }
