@@ -736,7 +736,10 @@
     <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem;">
       This is a live demo — talk to one of the bots I've built. See exactly what your customers would experience.
     </p>
-    <div id="voiceflow-embed" style="width: 100%; height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); display: block; margin: 0 auto;"></div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div id="voiceflow-embed-1" style="height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"></div>
+      <div id="voiceflow-embed-2" style="height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"></div>
+    </div>
   </div>
 
   <!-- INDUSTRIES -->
@@ -816,7 +819,28 @@
           },
           render: {
             mode: 'embedded',
-            target: document.getElementById('voiceflow-embed')
+            target: document.getElementById('voiceflow-embed-1')
+          }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '69a7630d7e59042952d0fc04' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          },
+          render: {
+            mode: 'embedded',
+            target: document.getElementById('voiceflow-embed-2')
           }
         });
       }
