@@ -633,7 +633,7 @@
           <span class="project-type">Reservations & FAQ</span>
           <span class="project-industry">// Bar & Restaurant</span>
         </div>
-        <h3>Add Your Project Name</h3>
+        <h3>The Fieldhouse Bar & Grill</h3>
         <p>Handles reservation requests, answers menu and hours questions, and captures contact info — so front-of-house staff can focus on guests already in the building.</p>
         <div class="project-footer">
           <div class="project-features">
@@ -659,25 +659,25 @@
             <div class="mini-dot mini-dot-g"></div>
           </div>
           <div class="mini-terminal-body">
-            <div><span class="t-muted">guest:</span> <span class="t-white">What's on tap tonight?</span></div>
-            <div><span class="t-cyan">bot:</span> <span class="t-white">16 drafts — any style preference?</span></div>
-            <div><span class="t-muted">guest:</span> <span class="t-white">Something hoppy</span></div>
-            <div><span class="t-cyan">bot:</span> <span class="t-green">Try the Centennial IPA — $7/pint.</span></div>
+            <div><span class="t-muted">user:</span> <span class="t-white">I'm looking for a 3-bed under $400k</span></div>
+            <div><span class="t-cyan">bot:</span> <span class="t-white">Got it. Preferred area?</span></div>
+            <div><span class="t-muted">user:</span> <span class="t-white">Near downtown, good schools</span></div>
+            <div><span class="t-cyan">bot:</span> <span class="t-green">Found 4 matches. Sending now.</span></div>
           </div>
         </div>
       </div>
       <div class="project-body">
         <div class="project-meta">
-          <span class="project-type">Menu Assistant</span>
-          <span class="project-industry">// Bar & Restaurant</span>
+          <span class="project-type">Lead Qualification</span>
+          <span class="project-industry">// Real Estate</span>
         </div>
-        <h3>Add Your Project Name</h3>
-        <p>Answers questions about the menu, recommends drinks or dishes based on preferences, and promotes specials — available on the website or embedded in a QR code at the table.</p>
+        <h3>Keystone Realty Group</h3>
+        <p>Qualifies buyer and seller leads 24/7 — capturing budget, location, and timeline before a single agent call. Serious prospects get routed directly to the right agent.</p>
         <div class="project-footer">
           <div class="project-features">
-            <span class="feature-tag">Menu Q&A</span>
-            <span class="feature-tag">Recommendations</span>
-            <span class="feature-tag">Specials Promotion</span>
+            <span class="feature-tag">Lead Capture</span>
+            <span class="feature-tag">Buyer Qualification</span>
+            <span class="feature-tag">Agent Routing</span>
           </div>
           <a href="#" class="btn-demo">
             View Demo
@@ -697,25 +697,25 @@
             <div class="mini-dot mini-dot-g"></div>
           </div>
           <div class="mini-terminal-body">
-            <div><span class="t-muted">guest:</span> <span class="t-white">Do you host private events?</span></div>
-            <div><span class="t-cyan">bot:</span> <span class="t-white">Yes — up to 80 guests. Tell me more.</span></div>
-            <div><span class="t-muted">guest:</span> <span class="t-white">Birthday party, ~30 people</span></div>
-            <div><span class="t-cyan">bot:</span> <span class="t-green">Got it. Sending event enquiry.</span></div>
+            <div><span class="t-muted">user:</span> <span class="t-white">What classes do you offer?</span></div>
+            <div><span class="t-cyan">bot:</span> <span class="t-white">HIIT, yoga, spin + more. Member?</span></div>
+            <div><span class="t-muted">user:</span> <span class="t-white">No, interested in joining</span></div>
+            <div><span class="t-cyan">bot:</span> <span class="t-green">Trial booked. See you Monday.</span></div>
           </div>
         </div>
       </div>
       <div class="project-body">
         <div class="project-meta">
-          <span class="project-type">Events & Enquiries</span>
-          <span class="project-industry">// Bar & Restaurant</span>
+          <span class="project-type">Appointment Booking</span>
+          <span class="project-industry">// Fitness & Wellness</span>
         </div>
-        <h3>Add Your Project Name</h3>
-        <p>Qualifies private event enquiries, captures party size and date, and routes serious leads directly to the events manager — without a single back-and-forth email.</p>
+        <h3>Apex Performance Studio</h3>
+        <p>Books trial sessions and classes, answers membership and pricing questions, and captures new member details — turning website visitors into booked appointments automatically.</p>
         <div class="project-footer">
           <div class="project-features">
-            <span class="feature-tag">Event Qualification</span>
-            <span class="feature-tag">Lead Routing</span>
-            <span class="feature-tag">Auto Follow-up</span>
+            <span class="feature-tag">Class Booking</span>
+            <span class="feature-tag">Membership FAQ</span>
+            <span class="feature-tag">Trial Scheduling</span>
           </div>
           <a href="#" class="btn-demo">
             View Demo
@@ -810,18 +810,20 @@
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '69a75a8d1f4284c638560689' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          },
-          render: {
-            mode: 'embedded',
-            target: document.getElementById('voiceflow-embed-1')
-          }
-        });
+        setTimeout(function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '69a75a8d1f4284c638560689' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            },
+            render: {
+              mode: 'embedded',
+              target: document.getElementById('voiceflow-embed-1')
+            }
+          });
+        }, 500);
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
@@ -831,18 +833,20 @@
   (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '69a7630d7e59042952d0fc04' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          },
-          render: {
-            mode: 'embedded',
-            target: document.getElementById('voiceflow-embed-2')
-          }
-        });
+        setTimeout(function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '69a7630d7e59042952d0fc04' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            },
+            render: {
+              mode: 'embedded',
+              target: document.getElementById('voiceflow-embed-2')
+            }
+          });
+        }, 500);
       }
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
