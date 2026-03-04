@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test -d \"c:/Users/lukes/OneDrive/Documents/My Website/node_modules\")"
+    ]
+  }
+}

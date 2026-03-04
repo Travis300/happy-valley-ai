@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Happy Valley AI | AI Chatbot Plans</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- SEO Meta Tags -->
+<meta name="description" content="Simple, transparent pricing for Happy Valley AI chatbots. Choose from Starter, Growth, or Scale — custom AI chatbots for local businesses starting at $97/mo.">
+<meta name="keywords" content="AI chatbot pricing, chatbot plans, Happy Valley AI pricing, custom chatbot cost, AI automation pricing">
+<meta name="author" content="Happy Valley AI">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Pricing — Happy Valley AI | AI Chatbot Plans">
+<meta property="og:description" content="Simple, transparent pricing for custom AI chatbots. Starting at $97/mo. No setup fees.">
+<meta property="og:url" content="https://happyvalleyai.co/pricing">
+<meta property="og:type" content="website">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://happyvalleyai.co/pricing">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pricing — Happy Valley AI | AI Chatbot Plans">
+<meta name="twitter:description" content="Simple, transparent pricing for custom AI chatbots. Starting at $97/mo.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a12;
+    --bg2: #080f1c;
+    --cyan: #00e5ff;
+    --blue: #0077ff;
+    --glow: rgba(0,229,255,0.15);
+    --text: #e8f0f8;
+    --muted: #7a90a8;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(0,229,255,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(5,10,18,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .logo span { color: var(--text); }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--cyan); }
+  nav ul a.active { color: var(--cyan); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--cyan) !important;
+    color: var(--bg) !important;
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  .page-hero {
+    padding: 10rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,119,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  h1 .accent {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--cyan);
+    text-shadow: 0 0 40px rgba(0,229,255,0.3);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 0.8rem;
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-note span {
+    color: var(--cyan);
+  }
+
+  /* PRICING SECTION */
+  #pricing {
+    padding: 2rem 2rem 7rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* PLAN CARDS (top) */
+  .plan-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.8rem;
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+
+  .plan-card.featured {
+    border-color: rgba(0,229,255,0.35);
+    background: rgba(0,229,255,0.04);
+    box-shadow: 0 0 60px rgba(0,229,255,0.08);
+  }
+
+  .plan-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    border-radius: 16px 16px 0 0;
+  }
+
+  .plan-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cyan);
+    padding: 0.25rem 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 1.2rem;
+  }
+
+  .plan-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .plan-price {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+
+  .plan-price sup {
+    font-size: 1.4rem;
+    font-weight: 700;
+    vertical-align: super;
+    color: var(--muted);
+  }
+
+  .plan-period {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .plan-tagline {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+    min-height: 2.5rem;
+  }
+
+  .btn-plan {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-plan-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .btn-plan-ghost:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .btn-plan-primary {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 30px rgba(0,229,255,0.25);
+  }
+
+  .btn-plan-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(0,229,255,0.45);
+  }
+
+  /* COMPARISON TABLE */
+  .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  /* Sticky header */
+  .compare-table thead th {
+    position: sticky;
+    top: 72px;
+    background: #080f1c;
+    z-index: 10;
+  }
+
+  .th-empty {
+    width: 40%;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .th-plan {
+    width: 20%;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .th-plan:last-child { border-right: none; }
+
+  .th-plan.featured-col {
+    background: rgba(0,229,255,0.04);
+    border-left: 1px solid rgba(0,229,255,0.2);
+    border-right: 1px solid rgba(0,229,255,0.2);
+  }
+
+  .th-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .th-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    display: block;
+  }
+
+  .th-price sup {
+    font-size: 0.8rem;
+    font-weight: 700;
+    vertical-align: super;
+    color: var(--muted);
+  }
+
+  .th-mo {
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: block;
+    margin-top: 0.1rem;
+  }
+
+  /* Section group header row */
+  .group-row td {
+    background: rgba(0,229,255,0.04);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.6rem 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .group-row td.featured-col {
+    background: rgba(0,229,255,0.06);
+  }
+
+  /* Feature rows */
+  .compare-table tbody tr:not(.group-row) td {
+    padding: 0.9rem 2rem;
+    border-bottom: 1px solid rgba(0,229,255,0.06);
+    font-size: 0.88rem;
+    vertical-align: middle;
+  }
+
+  .compare-table tbody tr:not(.group-row):last-child td {
+    border-bottom: none;
+  }
+
+  .compare-table tbody tr:not(.group-row):hover td {
+    background: rgba(255,255,255,0.015);
+  }
+
+  .compare-table tbody tr:not(.group-row) td:first-child {
+    color: var(--text);
+    border-right: 1px solid var(--border);
+  }
+
+  .compare-table tbody tr:not(.group-row) td:not(:first-child) {
+    text-align: center;
+    border-right: 1px solid rgba(0,229,255,0.06);
+    color: var(--muted);
+  }
+
+  .compare-table tbody tr:not(.group-row) td:last-child {
+    border-right: none;
+  }
+
+  td.featured-col {
+    background: rgba(0,229,255,0.025);
+    border-left: 1px solid rgba(0,229,255,0.12) !important;
+    border-right: 1px solid rgba(0,229,255,0.12) !important;
+  }
+
+  /* Check icon */
+  .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: rgba(0,229,255,0.12);
+    border-radius: 50%;
+    color: var(--cyan);
+  }
+
+  .check svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .dash {
+    color: rgba(255,255,255,0.15);
+    font-size: 1rem;
+  }
+
+  /* Value cell (text values like "500 / mo") */
+  .val {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--cyan);
+  }
+
+  /* TABLE FOOTER CTA row */
+  .table-cta-row td {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .table-cta-row td:first-child {
+    text-align: left;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-style: italic;
+  }
+
+  .table-cta-row td.featured-col {
+    background: rgba(0,229,255,0.04);
+  }
+
+  .btn-sm {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border-radius: 5px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+  }
+
+  .btn-sm-ghost {
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+  }
+
+  .btn-sm-ghost:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .btn-sm-primary {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(0,229,255,0.2);
+  }
+
+  .btn-sm-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 35px rgba(0,229,255,0.4);
+  }
+
+  /* FAQ */
+  #faq {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 7rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  #faq .section-label { text-align: center; }
+  #faq h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item.open { border-color: rgba(0,229,255,0.3); }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--card);
+    gap: 1rem;
+    user-select: none;
+  }
+
+  .faq-q:hover { color: var(--cyan); }
+
+  .faq-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--cyan);
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+    padding: 0 1.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding: 0 1.5rem 1.2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer .logo { font-size: 0.85rem; }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    footer { padding: 2rem 1.5rem; }
+
+    .page-hero { padding: 8rem 1.5rem 3rem; }
+
+    #pricing { padding: 1.5rem 1.5rem 5rem; }
+
+    .plan-cards {
+      grid-template-columns: 1fr;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* On mobile, hide the table and show plan cards only */
+    .table-wrap { display: none; }
+
+    /* Expand plan cards with features on mobile */
+    .plan-card { text-align: left; }
+    .plan-card .plan-price { text-align: left; }
+    .plan-card .btn-plan { text-align: center; }
+
+    .mobile-features {
+      display: block !important;
+      margin-top: 1.2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+
+    .mobile-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      list-style: none;
+    }
+
+    .mobile-features li .check {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .mobile-features li .check svg { width: 10px; height: 10px; }
+  }
+
+  .mobile-features { display: none; }
+</style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_yjtDqvqZ6iZJkaoNCQAApAb2RCwBopBkidaoy3uyHKg', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-01-30'
+    })
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">Happy Valley<span> AI</span></a>
+  <ul>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/pricing/" class="active">Pricing</a></li>
+    <li><a href="/#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- SUCCESS BANNER -->
+<div id="success-banner" style="display:none; background: rgba(0,230,118,0.1); border-bottom: 1px solid rgba(0,230,118,0.3); padding: 1rem 2rem; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.82rem; color: #00e676; position: relative; z-index: 1;">
+  ✓ Payment successful — welcome aboard! Check your email for next steps.
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-orb"></div>
+  <div class="section-label">// Plans & Pricing</div>
+  <h1>Simple Pricing.<br><span class="accent">No Surprises.</span></h1>
+  <p class="hero-sub">Pick a plan and go live in under 48 hours. Every plan includes a custom-built chatbot trained on your business.</p>
+  <p class="hero-note">All plans billed monthly &nbsp;·&nbsp; <span>No setup fees</span> &nbsp;·&nbsp; Cancel anytime</p>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+
+  <!-- TOP PLAN CARDS -->
+  <div class="plan-cards reveal">
+
+    <!-- STARTER -->
+    <div class="plan-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price"><sup>$</sup>97</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-tagline">Get your first AI chatbot live and handling customer questions around the clock.</div>
+      <button class="btn-plan btn-plan-ghost" data-plan="starter" onclick="checkout(this)">Get Started</button>
+      <ul class="mobile-features">
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>AI chatbot, custom trained</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>24/7 availability</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Up to 500 conversations/mo</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>FAQ & info responses</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Setup in 48 hours</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Email support</li>
+      </ul>
+    </div>
+
+    <!-- GROWTH (featured) -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-price"><sup>$</sup>247</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-tagline">Lead capture, booking automation, and integrations — real ROI for growing businesses.</div>
+      <button class="btn-plan btn-plan-primary" data-plan="growth" onclick="checkout(this)">Get Started</button>
+      <ul class="mobile-features">
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Everything in Starter</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Up to 2,000 conversations/mo</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Lead capture & qualification</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Appointment booking</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>CRM & email integration</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Analytics dashboard</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Custom branding</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Priority email support</li>
+      </ul>
+    </div>
+
+    <!-- SCALE -->
+    <div class="plan-card">
+      <div class="plan-name">Scale</div>
+      <div class="plan-price"><sup>$</sup>497</div>
+      <div class="plan-period">per month</div>
+      <div class="plan-tagline">Unlimited conversations, custom integrations, and a dedicated team for high-volume operations.</div>
+      <button class="btn-plan btn-plan-ghost" data-plan="scale" onclick="checkout(this)">Get Started</button>
+      <ul class="mobile-features">
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Everything in Growth</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Unlimited conversations</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Multi-location support</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Custom integrations</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Monthly strategy call</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Dedicated account manager</li>
+        <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span>Dedicated support</li>
+      </ul>
+    </div>
+
+  </div><!-- /plan-cards -->
+
+  <!-- COMPARISON TABLE (desktop) -->
+  <div class="table-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="th-empty"></th>
+          <th class="th-plan">
+            <span class="th-name">Starter</span>
+            <span class="th-price"><sup>$</sup>97</span>
+            <span class="th-mo">/ month</span>
+          </th>
+          <th class="th-plan featured-col">
+            <span class="th-name">Growth</span>
+            <span class="th-price"><sup>$</sup>247</span>
+            <span class="th-mo">/ month</span>
+          </th>
+          <th class="th-plan">
+            <span class="th-name">Scale</span>
+            <span class="th-price"><sup>$</sup>497</span>
+            <span class="th-mo">/ month</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- CORE -->
+        <tr class="group-row">
+          <td colspan="4">// Core</td>
+        </tr>
+        <tr>
+          <td>AI Chatbot</td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>24/7 Availability</td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Custom Trained on Your Business</td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>FAQ & Info Responses</td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Setup in 48 Hours</td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Monthly Conversations</td>
+          <td><span class="val">500</span></td>
+          <td class="featured-col"><span class="val">2,000</span></td>
+          <td><span class="val">Unlimited</span></td>
+        </tr>
+
+        <!-- AUTOMATION -->
+        <tr class="group-row">
+          <td colspan="4">// Automation</td>
+        </tr>
+        <tr>
+          <td>Lead Capture & Qualification</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Appointment & Booking Automation</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>CRM & Email Integration</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Custom Branding</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+
+        <!-- ANALYTICS -->
+        <tr class="group-row">
+          <td colspan="4">// Analytics</td>
+        </tr>
+        <tr>
+          <td>Analytics Dashboard</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Conversation History & Logs</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+
+        <!-- SCALE FEATURES -->
+        <tr class="group-row">
+          <td colspan="4">// Scale</td>
+        </tr>
+        <tr>
+          <td>Multi-Location Support</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="dash">—</span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Custom Integrations (Zapier, etc.)</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="dash">—</span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Monthly Strategy Call</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="dash">—</span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+        <tr>
+          <td>Dedicated Account Manager</td>
+          <td><span class="dash">—</span></td>
+          <td class="featured-col"><span class="dash">—</span></td>
+          <td><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 5,9 10,3"/></svg></span></td>
+        </tr>
+
+        <!-- SUPPORT -->
+        <tr class="group-row">
+          <td colspan="4">// Support</td>
+        </tr>
+        <tr>
+          <td>Support Level</td>
+          <td><span class="val">Email</span></td>
+          <td class="featured-col"><span class="val">Priority Email</span></td>
+          <td><span class="val">Dedicated</span></td>
+        </tr>
+
+        <!-- CTA ROW -->
+        <tr class="table-cta-row">
+          <td>All plans include a free discovery call.</td>
+          <td><button class="btn-sm btn-sm-ghost" data-plan="starter" onclick="checkout(this)">Get Started</button></td>
+          <td class="featured-col"><button class="btn-sm btn-sm-primary" data-plan="growth" onclick="checkout(this)">Get Started</button></td>
+          <td><button class="btn-sm btn-sm-ghost" data-plan="scale" onclick="checkout(this)">Get Started</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div><!-- /table-wrap -->
+
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="reveal">
+  <div class="section-label">// Common Questions</div>
+  <h2>FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      Is there a setup fee?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">No. Every plan is all-inclusive — you pay one flat monthly rate and we handle everything from build to deployment. No hidden fees, no one-time charges.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      How quickly can my chatbot go live?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">Most chatbots go live within 48 hours of your discovery call. We'll collect your business info, train the bot, and have it running on your site in under two days.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      Can I upgrade or downgrade my plan?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">Yes, anytime. Just reach out and we'll adjust your plan at the start of your next billing cycle. No penalties, no friction.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      What happens if I exceed my monthly conversations?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">We'll notify you when you're approaching your limit and discuss upgrading. Your chatbot won't suddenly go offline — we'll always give you a heads up first.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      Do I own the chatbot?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">The chatbot is built and maintained by us, and your subscription covers ongoing hosting, updates, and support. Think of it like a managed service — we keep it running smoothly so you don't have to.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">
+      What platforms does it work on?
+      <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </div>
+    <div class="faq-a">We build chatbots for websites (any platform), and can integrate with tools like Slack, WhatsApp, Facebook Messenger, and more depending on your plan. Ask us about your specific setup on the discovery call.</div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="logo">Happy Valley<span> AI</span></a>
+  <p>© 2026 Happy Valley AI. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Show success banner if redirected back from Stripe
+  if (new URLSearchParams(window.location.search).get('success') === '1') {
+    document.getElementById('success-banner').style.display = 'block';
+  }
+
+  // Stripe checkout
+  async function checkout(btn) {
+    const plan = btn.dataset.plan;
+    const original = btn.textContent;
+    btn.textContent = 'Loading...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan })
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error('No URL');
+      }
+    } catch {
+      btn.textContent = 'Error — try again';
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 3000);
+    }
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
