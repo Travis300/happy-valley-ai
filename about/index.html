@@ -498,16 +498,7 @@
           <div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div>
           <div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div>
         </div>
-        <div style="color: var(--cyan); margin-bottom: 0.5rem;">$ whoami</div>
-        <div style="color: var(--text); margin-bottom: 1.4rem; font-size: 0.82rem; font-weight: 700;">luke_surovec</div>
-        <div style="color: var(--cyan); margin-bottom: 0.8rem;">$ cat profile.txt</div>
-        <div style="color: var(--muted); line-height: 2;">
-          <div><span style="color: var(--cyan);">role :</span> AI Chatbot Builder</div>
-          <div><span style="color: var(--cyan);">loc  :</span> State College, PA</div>
-          <div><span style="color: var(--cyan);">stack:</span> AI · Web · Security</div>
-          <div><span style="color: var(--cyan);">open :</span> <span style="color: #28c840;">available</span></div>
-        </div>
-        <div style="color: var(--muted); margin-top: 0.5rem;">$ <span class="cursor"></span></div>
+        <div id="whoami-body" style="line-height: 2;"></div>
       </div>
       <div class="bio-meta">
         <div class="meta-item">
@@ -609,6 +600,70 @@
     });
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
+
+  // whoami typewriter
+  const whoamiLines = [
+    { pre: '$ ', pColor: 'var(--cyan)', txt: 'whoami',           tColor: 'var(--cyan)',  speed: 60, before: 0   },
+    { txt: 'luke_surovec',                                         tColor: 'var(--text)',  bold: true, speed: 50, before: 350 },
+    { blank: true, before: 250 },
+    { pre: '$ ', pColor: 'var(--cyan)', txt: 'cat profile.txt',  tColor: 'var(--cyan)',  speed: 45, before: 200 },
+    { pre: 'role :', pColor: 'var(--cyan)', txt: ' AI Chatbot Builder',    tColor: 'var(--muted)', speed: 30, before: 400 },
+    { pre: 'loc  :', pColor: 'var(--cyan)', txt: ' State College, PA',     tColor: 'var(--muted)', speed: 30, before: 120 },
+    { pre: 'stack:', pColor: 'var(--cyan)', txt: ' AI \xb7 Web \xb7 Security', tColor: 'var(--muted)', speed: 30, before: 120 },
+    { pre: 'open :', pColor: 'var(--cyan)', txt: ' available',             tColor: '#28c840',      speed: 30, before: 120 },
+    { cursor: true, before: 300 },
+  ];
+  let whoamiStarted = false;
+
+  function typeWhoami(i, c) {
+    const body = document.getElementById('whoami-body');
+    if (i >= whoamiLines.length) return;
+    const line = whoamiLines[i];
+    const next = () => setTimeout(() => typeWhoami(i + 1, 0), whoamiLines[i + 1] ? whoamiLines[i + 1].before : 0);
+
+    if (line.blank) {
+      const d = document.createElement('div'); d.innerHTML = '&nbsp;'; body.appendChild(d);
+      next(); return;
+    }
+    if (line.cursor) {
+      const d = document.createElement('div');
+      d.innerHTML = '<span style="color: var(--muted);">$ </span><span class="cursor"></span>';
+      body.appendChild(d); return;
+    }
+    if (c === 0) {
+      const d = document.createElement('div'); d.dataset.wi = i;
+      if (line.pre) {
+        const s = document.createElement('span');
+        s.style.color = line.pColor;
+        s.textContent = line.pre;
+        d.appendChild(s);
+      }
+      const s = document.createElement('span');
+      s.style.color = line.tColor;
+      if (line.bold) { s.style.fontWeight = '700'; s.style.fontSize = '0.82rem'; }
+      d.appendChild(s);
+      body.appendChild(d);
+    }
+    const row = body.querySelector('[data-wi="' + i + '"]');
+    const span = row.lastElementChild;
+    if (c < line.txt.length) {
+      span.textContent += line.txt[c];
+      setTimeout(() => typeWhoami(i, c + 1), line.speed);
+    } else {
+      next();
+    }
+  }
+
+  const whoamiObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !whoamiStarted) {
+        whoamiStarted = true;
+        whoamiObs.disconnect();
+        setTimeout(() => typeWhoami(0, 0), 400);
+      }
+    });
+  }, { threshold: 0.3 });
+  whoamiObs.observe(document.querySelector('.bio-block'));
 </script>
 </body>
 </html>
