@@ -492,7 +492,7 @@
   <!-- BIO -->
   <div class="bio-block reveal">
     <div class="bio-photo">
-      <div class="photo-frame" style="min-height: 280px; padding: 1.5rem; box-sizing: border-box; font-family: 'Space Mono', monospace; font-size: 0.72rem;">
+      <div class="photo-frame" id="whoami-frame" style="min-height: 280px; aspect-ratio: unset; padding: 1.5rem; box-sizing: border-box; font-family: 'Space Mono', monospace; font-size: 0.72rem; overflow: hidden;">
         <div style="display: flex; gap: 0.4rem; margin-bottom: 1.4rem;">
           <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div>
           <div style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e;"></div>
@@ -627,8 +627,10 @@
     }
     if (line.cursor) {
       const d = document.createElement('div');
-      d.innerHTML = '<span style="color: var(--muted);">$ </span><span class="cursor"></span>';
-      body.appendChild(d); return;
+      d.innerHTML = '<span style="color: var(--muted);">$ </span><span id="whoami-input" style="color: var(--text);"></span><span class="cursor"></span>';
+      body.appendChild(d);
+      activateWhoamiInput();
+      return;
     }
     if (c === 0) {
       const d = document.createElement('div'); d.dataset.wi = i;
@@ -652,6 +654,74 @@
     } else {
       next();
     }
+  }
+
+  function activateWhoamiInput() {
+    const SECRET = 'hire me';
+    const CODE   = 'HVAI50';
+    let buffer = '';
+
+    function appendWhoamiLine(text, color, bold) {
+      const body = document.getElementById('whoami-body');
+      const frame = document.getElementById('whoami-frame');
+      const d = document.createElement('div');
+      const s = document.createElement('span');
+      s.style.color = color;
+      if (bold) s.style.fontWeight = '700';
+      s.textContent = text;
+      d.appendChild(s);
+      body.appendChild(d);
+      frame.style.minHeight = frame.scrollHeight + 'px';
+    }
+
+    function handleKey(e) {
+      const active = document.activeElement;
+      if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT')) return;
+
+      if (e.key === 'Enter') {
+        document.removeEventListener('keydown', handleKey);
+        const inputSpan = document.getElementById('whoami-input');
+        const submittedCmd = buffer;
+        buffer = '';
+        if (inputSpan) inputSpan.textContent = '';
+
+        const cursorLine = document.querySelector('#whoami-body .cursor')?.parentElement;
+        if (cursorLine) cursorLine.remove();
+
+        appendWhoamiLine('$ ' + submittedCmd, 'var(--muted)', false);
+
+        if (submittedCmd.toLowerCase().trim() === SECRET) {
+          setTimeout(() => {
+            appendWhoamiLine('\u00a0', 'var(--text)', false);
+            appendWhoamiLine('\u2713 ACCESS GRANTED', 'var(--cyan)', true);
+            appendWhoamiLine('Use code ' + CODE + ' for 50% off', '#28c840', false);
+            appendWhoamiLine('\u00a0', 'var(--text)', false);
+            appendWhoamiLine('$', 'var(--muted)', false);
+          }, 300);
+        } else {
+          setTimeout(() => {
+            appendWhoamiLine(submittedCmd + ': command not found', 'var(--muted)', false);
+            const body = document.getElementById('whoami-body');
+            const d = document.createElement('div');
+            d.innerHTML = '<span style="color: var(--muted);">$ </span><span id="whoami-input" style="color: var(--text);"></span><span class="cursor"></span>';
+            body.appendChild(d);
+            document.getElementById('whoami-frame').style.minHeight = document.getElementById('whoami-frame').scrollHeight + 'px';
+            document.addEventListener('keydown', handleKey);
+          }, 250);
+        }
+      } else if (e.key === 'Backspace') {
+        e.preventDefault();
+        buffer = buffer.slice(0, -1);
+        const inputSpan = document.getElementById('whoami-input');
+        if (inputSpan) inputSpan.textContent = buffer;
+      } else if (e.key.length === 1) {
+        buffer += e.key;
+        const inputSpan = document.getElementById('whoami-input');
+        if (inputSpan) inputSpan.textContent = buffer;
+      }
+    }
+
+    document.addEventListener('keydown', handleKey);
   }
 
   const whoamiObs = new IntersectionObserver((entries) => {
