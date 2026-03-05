@@ -805,19 +805,7 @@
           <div class="dot dot-g"></div>
           <span class="terminal-title">happy-valley-ai.bot</span>
         </div>
-        <div class="terminal-body">
-          <div><span class="t-muted">visitor:</span> <span class="t-white">Hi, I need help with my order</span></div>
-          <div><span class="t-cyan">bot:</span> <span class="t-white">Hey! I can help with that.</span></div>
-          <div><span class="t-cyan">bot:</span> <span class="t-white">Can I get your order number?</span></div>
-          <div><span class="t-muted">visitor:</span> <span class="t-white">#HV-8821</span></div>
-          <div><span class="t-cyan">bot:</span> <span class="t-green">Found it! Ships tomorrow ✓</span></div>
-          <div><span class="t-cyan">bot:</span> <span class="t-white">Anything else I can help with?</span></div>
-          <div><span class="t-muted">visitor:</span> <span class="t-white">Nope, thanks!</span></div>
-          <div><span class="t-cyan">bot:</span> <span class="t-white">Happy to help. Have a great day.</span></div>
-          <div>&nbsp;</div>
-          <div><span class="t-green">✓ Issue resolved in 38 seconds</span></div>
-          <div><span class="t-muted">$ </span><span class="cursor"></span></div>
-        </div>
+        <div class="terminal-body" id="terminal-body"></div>
       </div>
     </div>
   </div>
@@ -884,6 +872,73 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // Terminal typewriter
+  const termLines = [
+    { pre: 'visitor: ', pCls: 't-muted', txt: 'Hi, I need help with my order',      tCls: 't-white', speed: 45, before: 0   },
+    { pre: 'bot: ',     pCls: 't-cyan',  txt: 'Hey! I can help with that.',          tCls: 't-white', speed: 28, before: 420 },
+    { pre: 'bot: ',     pCls: 't-cyan',  txt: 'Can I get your order number?',        tCls: 't-white', speed: 28, before: 180 },
+    { pre: 'visitor: ', pCls: 't-muted', txt: '#HV-8821',                            tCls: 't-white', speed: 55, before: 650 },
+    { pre: 'bot: ',     pCls: 't-cyan',  txt: 'Found it! Ships tomorrow \u2713',     tCls: 't-green', speed: 28, before: 520 },
+    { pre: 'bot: ',     pCls: 't-cyan',  txt: 'Anything else I can help with?',      tCls: 't-white', speed: 28, before: 180 },
+    { pre: 'visitor: ', pCls: 't-muted', txt: 'Nope, thanks!',                       tCls: 't-white', speed: 50, before: 420 },
+    { pre: 'bot: ',     pCls: 't-cyan',  txt: 'Happy to help. Have a great day.',    tCls: 't-white', speed: 28, before: 320 },
+    { blank: true, before: 420 },
+    { pre: '', pCls: '', txt: '\u2713 Issue resolved in 38 seconds', tCls: 't-green', speed: 0, before: 200 },
+    { cursor: true, before: 320 },
+  ];
+  let termStarted = false;
+
+  function typeTermLine(i, c) {
+    const body = document.getElementById('terminal-body');
+    if (i >= termLines.length) return;
+    const line = termLines[i];
+
+    const next = () => setTimeout(() => typeTermLine(i + 1, 0), termLines[i + 1] ? termLines[i + 1].before : 0);
+
+    if (line.blank) {
+      const d = document.createElement('div'); d.innerHTML = '&nbsp;'; body.appendChild(d);
+      next(); return;
+    }
+    if (line.cursor) {
+      const d = document.createElement('div');
+      d.innerHTML = '<span class="t-muted">$ </span><span class="cursor"></span>';
+      body.appendChild(d); return;
+    }
+    if (line.speed === 0) {
+      const d = document.createElement('div');
+      if (line.pre) { const s = document.createElement('span'); s.className = line.pCls; s.textContent = line.pre; d.appendChild(s); }
+      const s = document.createElement('span'); s.className = line.tCls; s.textContent = line.txt; d.appendChild(s);
+      body.appendChild(d); next(); return;
+    }
+
+    if (c === 0) {
+      const d = document.createElement('div'); d.dataset.tl = i;
+      if (line.pre) { const s = document.createElement('span'); s.className = line.pCls; s.textContent = line.pre; d.appendChild(s); }
+      const s = document.createElement('span'); s.className = line.tCls; d.appendChild(s);
+      body.appendChild(d);
+    }
+    const row = body.querySelector('[data-tl="' + i + '"]');
+    const span = row.lastElementChild;
+    if (c < line.txt.length) {
+      span.textContent += line.txt[c];
+      setTimeout(() => typeTermLine(i, c + 1), line.speed);
+    } else {
+      next();
+    }
+  }
+
+  const termEl = document.querySelector('.about-visual');
+  const termObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !termStarted) {
+        termStarted = true;
+        termObs.disconnect();
+        setTimeout(() => typeTermLine(0, 0), 500);
+      }
+    });
+  }, { threshold: 0.4 });
+  termObs.observe(termEl);
 
   // Contact form submit
   document.getElementById('submitBtn').addEventListener('click', async function() {
