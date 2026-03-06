@@ -718,7 +718,7 @@
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="section-label" id="services-label"></div>
+  <div class="section-label">// What We Do</div>
   <h2>AI Solutions Built<br>Around Your Business</h2>
   <p class="section-intro">Every chatbot we build is custom-trained on your business — your tone, your products, your customers.</p>
 
@@ -939,29 +939,6 @@
     });
   }, { threshold: 0.4 });
   termObs.observe(termEl);
-
-  // Services label typewriter
-  const servicesLabel = document.getElementById('services-label');
-  const servicesText = '// What We Do';
-  let servicesStarted = false;
-
-  function typeServicesLabel(i) {
-    if (i <= servicesText.length) {
-      servicesLabel.textContent = servicesText.slice(0, i);
-      setTimeout(() => typeServicesLabel(i + 1), 55);
-    }
-  }
-
-  const servicesObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !servicesStarted) {
-        servicesStarted = true;
-        servicesObs.disconnect();
-        setTimeout(() => typeServicesLabel(0), 200);
-      }
-    });
-  }, { threshold: 0.3 });
-  servicesObs.observe(document.getElementById('services'));
 
   // Contact form submit
   document.getElementById('submitBtn').addEventListener('click', async function() {
