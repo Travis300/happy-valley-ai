@@ -1031,27 +1031,14 @@
   }
 
   // Stripe checkout
-  async function checkout(btn) {
-    const plan = btn.dataset.plan;
-    const original = btn.textContent;
-    btn.textContent = 'Loading...';
-    btn.disabled = true;
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan })
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No URL');
-      }
-    } catch {
-      btn.textContent = 'Error — try again';
-      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 3000);
-    }
+  function checkout(btn) {
+    const links = {
+      starter: 'https://buy.stripe.com/test_8x24gycEYcck6kF33h4sE02',
+      growth:  'https://buy.stripe.com/test_5kQ4gy9sM0tCbEZdHV4sE01',
+      scale:   'https://buy.stripe.com/test_6oUbJ05cw908cJ36ft4sE03',
+    };
+    const url = links[btn.dataset.plan];
+    if (url) window.location.href = url;
   }
 
   // FAQ accordion
