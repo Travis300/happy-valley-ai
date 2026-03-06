@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brothers Bar & Grill Bot — Happy Valley AI Demo</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a12;
+    --cyan: #00e5ff;
+    --border: rgba(0,229,255,0.12);
+    --text: #e8f0f8;
+    --muted: #7a90a8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    overflow: hidden;
+  }
+
+  .demo-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(5,10,18,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    height: 56px;
+  }
+
+  .demo-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .demo-back:hover { color: var(--cyan); }
+
+  .demo-back svg { width: 14px; height: 14px; }
+
+  .demo-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--cyan);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .demo-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    background: rgba(0,229,255,0.05);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+  }
+
+  .demo-frame {
+    position: fixed;
+    top: 56px; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: calc(100% - 56px);
+  }
+</style>
+</head>
+<body>
+
+<header class="demo-header">
+  <a href="/work/" class="demo-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Work
+  </a>
+  <span class="demo-title">Brothers Bar & Grill Bot</span>
+  <span class="demo-badge">// Bar & Restaurant Demo</span>
+</header>
+
+<div class="demo-frame" id="voiceflow-embed"></div>
+
+<script type="text/javascript">
+  (function(d, t) {
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: '69a75a8d1f4284c638560689' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production',
+        voice: { url: 'https://runtime-api.voiceflow.com' },
+        render: {
+          mode: 'embedded',
+          target: document.getElementById('voiceflow-embed')
+        }
+      });
+    };
+    v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+    v.type = 'text/javascript';
+    s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+
+</body>
+</html>

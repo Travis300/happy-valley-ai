@@ -419,6 +419,51 @@
 
   .btn-demo svg { width: 12px; height: 12px; }
 
+  /* DEMO CARDS */
+  .demo-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  .demo-card:hover {
+    border-color: rgba(0,229,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .demo-card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .demo-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .demo-card-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  @media (max-width: 600px) {
+    [style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
   /* DIVIDER */
   .section-divider {
     max-width: 1200px;
@@ -743,11 +788,27 @@
       <div class="divider-line"></div>
     </div>
     <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.7; max-width: 600px; margin-bottom: 2.5rem;">
-      These are working demos built on real use cases — try them out and see how they handle your questions. What you're seeing is just the foundation. Every bot I build is custom-trained on your business, your tone, and your customers. <a href="/#contact" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,229,255,0.3);">Get in touch</a> to see what one built specifically for you could do.
+      These are working demos built on real use cases — try them out and see how they handle your questions. Every bot I build is custom-trained on your business, your tone, and your customers. <a href="/#contact" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,229,255,0.3);">Get in touch</a> to see what one built specifically for you could do.
     </p>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-      <div id="voiceflow-embed-1" style="height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"></div>
-      <div id="voiceflow-embed-2" style="height: 600px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"></div>
+      <div class="demo-card">
+        <div class="demo-card-label">// Bar & Restaurant</div>
+        <h3 class="demo-card-title">Brothers Bar and Grill Bot</h3>
+        <p class="demo-card-desc">Handles reservations, menu and hours questions, and captures contact info — live and ready to chat.</p>
+        <a href="/demo/brothers/" class="btn-demo">
+          Try Demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="demo-card">
+        <div class="demo-card-label">// Fitness and Wellness</div>
+        <h3 class="demo-card-title">Crunch Fitness Bot</h3>
+        <p class="demo-card-desc">Books classes, answers membership and pricing questions, and captures new member details — turning website visitors into booked appointments.</p>
+        <a href="/demo/crunch/" class="btn-demo">
+          Try Demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -814,60 +875,7 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 
-  // Prevent Voiceflow iframes from hijacking scroll on init
-  let scrollLocked = true;
-  function preventScroll() { if (scrollLocked) window.scrollTo(0, 0); }
-  window.addEventListener('scroll', preventScroll);
-  setTimeout(() => {
-    scrollLocked = false;
-    window.removeEventListener('scroll', preventScroll);
-  }, 2000);
 </script>
 
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        setTimeout(function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '69a75a8d1f4284c638560689' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            },
-            render: {
-              mode: 'embedded',
-              target: document.getElementById('voiceflow-embed-1')
-            }
-          });
-        }, 500);
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
-
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        setTimeout(function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '69a7630d7e59042952d0fc04' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            },
-            render: {
-              mode: 'embedded',
-              target: document.getElementById('voiceflow-embed-2')
-            }
-          });
-        }, 500);
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
 </body>
 </html>
