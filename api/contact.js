@@ -29,11 +29,31 @@ module.exports = async function handler(req, res) {
     })
   });
 
-  if (response.ok) {
-    return res.status(200).json({ success: true });
-  } else {
+  if (!response.ok) {
     const err = await response.json();
     console.error('Resend error:', err);
     return res.status(500).json({ error: 'Failed to send email' });
   }
+
+  // Confirmation email to the inquirer
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: 'hello@happyvalleyai.co',
+      to: email,
+      subject: 'Thanks for reaching out — Happy Valley AI',
+      html: `
+        <p>Hi ${firstName},</p>
+        <p>Thanks for getting in touch! We've received your message and will get back to you within 24 hours.</p>
+        <p>In the meantime, feel free to check out our live demo bots at <a href="https://happyvalleyai.co/work">happyvalleyai.co/work</a> to see what we can build for your business.</p>
+        <p>Talk soon,<br>Luke<br>Happy Valley AI<br>hello@happyvalleyai.co<br><a href="https://happyvalleyai.co">happyvalleyai.co</a></p>
+      `
+    })
+  });
+
+  return res.status(200).json({ success: true });
 }
