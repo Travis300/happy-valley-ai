@@ -43,14 +43,14 @@ module.exports = async function handler(req, res) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: 'hello@happyvalleyai.co',
+      from: 'luke@happyvalleyai.co',
       to: email,
       subject: 'Thanks for reaching out — Happy Valley AI',
       html: `
         <p>Hi ${firstName},</p>
         <p>Thanks for getting in touch! We've received your message and will get back to you within 24 hours.</p>
         <p>In the meantime, feel free to check out our live demo bots at <a href="https://happyvalleyai.co/work">happyvalleyai.co/work</a> to see what we can build for your business.</p>
-        <p>Talk soon,<br>Luke<br>Happy Valley AI<br>hello@happyvalleyai.co<br><a href="https://happyvalleyai.co">happyvalleyai.co</a></p>
+        <p>Talk soon,<br>Luke<br>Happy Valley AI<br>luke@happyvalleyai.co<br><a href="https://happyvalleyai.co">happyvalleyai.co</a></p>
       `
     })
   });
