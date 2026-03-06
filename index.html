@@ -279,6 +279,21 @@
     display: block;
   }
 
+  .stat-inf { display: inline-block; }
+
+  .inf-path {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+  }
+
+  .stat-inf.counted .inf-path {
+    animation: drawInf 1.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes drawInf {
+    to { stroke-dashoffset: 0; }
+  }
+
   .stat-label {
     font-size: 0.8rem;
     color: var(--muted);
@@ -699,19 +714,23 @@
 <!-- STATS -->
 <div class="stats-bar reveal">
   <div class="stat">
-    <span class="stat-num">24/7</span>
+    <span class="stat-num" data-count="24" data-suffix="/7">0/7</span>
     <span class="stat-label">Always On</span>
   </div>
   <div class="stat">
-    <span class="stat-num">&lt; 48h</span>
+    <span class="stat-num" data-count="48" data-prefix="&lt; " data-suffix="h">0h</span>
     <span class="stat-label">Deployment Time</span>
   </div>
   <div class="stat">
-    <span class="stat-num">100%</span>
+    <span class="stat-num" data-count="100" data-suffix="%">0%</span>
     <span class="stat-label">Custom Built</span>
   </div>
   <div class="stat">
-    <span class="stat-num">∞</span>
+    <span class="stat-num stat-inf">
+      <svg viewBox="0 0 100 40" width="72" height="29" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+        <path class="inf-path" d="M 50,20 C 60,5 90,5 90,20 C 90,35 60,35 50,20 C 40,5 10,5 10,20 C 10,35 40,35 50,20"/>
+      </svg>
+    </span>
     <span class="stat-label">Scalability</span>
   </div>
 </div>
@@ -862,6 +881,39 @@
 </footer>
 
 <script>
+  // Stats count-up
+  function animateCount(el) {
+    const target = +el.dataset.count;
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3); // ease-out cubic
+      el.textContent = prefix + Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  let statsAnimated = false;
+  const statsObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        statsObs.disconnect();
+        document.querySelectorAll('.stat-num[data-count]').forEach((el, i) => {
+          setTimeout(() => animateCount(el), i * 120);
+        });
+        setTimeout(() => {
+          document.querySelector('.stat-inf')?.classList.add('counted');
+        }, 3 * 120);
+      }
+    });
+  }, { threshold: 0.5 });
+  statsObs.observe(document.querySelector('.stats-bar'));
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
