@@ -1070,14 +1070,29 @@
   }
 
   // Stripe checkout
-  function checkout(btn) {
-    const links = {
-      starter: 'https://buy.stripe.com/test_8x24gycEYcck6kF33h4sE02',
-      growth:  'https://buy.stripe.com/test_5kQ4gy9sM0tCbEZdHV4sE01',
-      scale:   'https://buy.stripe.com/test_6oUbJ05cw908cJ36ft4sE03',
-    };
-    const url = links[btn.dataset.plan];
-    if (url) window.location.href = url;
+  async function checkout(btn) {
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Loading...';
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: btn.dataset.plan })
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    } catch (e) {
+      alert('Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
   }
 
   // FAQ accordion
