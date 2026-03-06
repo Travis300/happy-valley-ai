@@ -657,8 +657,6 @@
   }
 
   function activateWhoamiInput() {
-    const SECRET = 'hire me';
-    const CODE   = 'HVAI50';
     let buffer = '';
 
     function appendWhoamiLine(text, color, bold) {
@@ -690,16 +688,20 @@
 
         appendWhoamiLine('$ ' + submittedCmd, 'var(--muted)', false);
 
-        if (submittedCmd.toLowerCase().trim() === SECRET) {
-          setTimeout(() => {
+        fetch('/api/easter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cmd: submittedCmd })
+        })
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) {
             appendWhoamiLine('\u00a0', 'var(--text)', false);
             appendWhoamiLine('\u2713 ACCESS GRANTED', 'var(--cyan)', true);
-            appendWhoamiLine('Use code ' + CODE + ' for 50% off', '#28c840', false);
+            appendWhoamiLine('Use code ' + data.code + ' for 50% off', '#28c840', false);
             appendWhoamiLine('\u00a0', 'var(--text)', false);
             appendWhoamiLine('$', 'var(--muted)', false);
-          }, 300);
-        } else {
-          setTimeout(() => {
+          } else {
             appendWhoamiLine(submittedCmd + ': command not found', 'var(--muted)', false);
             const body = document.getElementById('whoami-body');
             const d = document.createElement('div');
@@ -707,8 +709,8 @@
             body.appendChild(d);
             document.getElementById('whoami-frame').style.minHeight = document.getElementById('whoami-frame').scrollHeight + 'px';
             document.addEventListener('keydown', handleKey);
-          }, 250);
-        }
+          }
+        });
       } else if (e.key === 'Backspace') {
         e.preventDefault();
         buffer = buffer.slice(0, -1);
