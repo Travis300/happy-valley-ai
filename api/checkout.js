@@ -22,6 +22,7 @@ module.exports = async function handler(req, res) {
       mode: 'subscription',
       'line_items[0][price]': priceId,
       'line_items[0][quantity]': '1',
+      allow_promotion_codes: 'true',
       success_url: 'https://happyvalleyai.co/pricing?success=1',
       cancel_url:  'https://happyvalleyai.co/pricing',
     }).toString()
