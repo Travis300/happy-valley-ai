@@ -121,6 +121,31 @@
     color: var(--bg) !important;
   }
 
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* SECTIONS */
   section { position: relative; z-index: 1; }
 
@@ -667,12 +692,24 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
+    nav { padding: 1rem 1.5rem; flex-wrap: wrap; align-items: center; }
+    nav ul {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 0 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    nav ul.open { display: flex; }
+    nav ul li a { padding: 0.75rem 0; display: block; }
+    .nav-hamburger { display: flex; }
     #services, #contact { padding: 5rem 1.5rem; }
     #about { padding: 5rem 1.5rem; }
     .about-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .stats-bar { gap: 2rem; padding: 2rem 1.5rem; }
+    .stats-bar { gap: 2rem; padding: 2rem 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .services-grid { grid-template-columns: 1fr; }
     footer { padding: 2rem 1.5rem; }
     .form-row { grid-template-columns: 1fr; }
   }
@@ -690,7 +727,10 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="logo">Happy Valley<span> AI</span></a>
-  <ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="navMenu">
     <li><a href="#services">Services</a></li>
     <li><a href="/work/">Work</a></li>
     <li><a href="/about/">About</a></li>
@@ -1040,6 +1080,20 @@
         this.style.background = '';
       }, 3000);
     }
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const navMenu = document.getElementById('navMenu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+  });
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+    });
   });
 </script>
 </body>
